@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultural Heritage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Your existing CSS code */
+        .container { display: flex; margin-top: 20px; }
+        .content { flex: 1; padding: 20px; }
+        .heritage-site { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; background-color: #fff; }
+        .heritage-site img { max-width: 30%; height: auto; margin-bottom: 10px; }
+        footer { background-color: #333; color: #fff; text-align: center; padding: 10px 0; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation Bar -->
+    <header>
+        <div class="logo">Cultural Heritage</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="preference.html">Preference</a></li>
+                <li><a href="recommendation.html">Recommendations</a></li>
+                <li><a href="extra.html">See All</a></li>
+                <li><a href="vr.html">VR Experience</a></li>
+                <li><a href="map.html">Map</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Search Bar -->
+    <section class="hero" id="home">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Explore Cultural Heritage</h1>
+            <p>Discover the rich history and culture of India.</p>
+            <div class="dropdown-container">
+                <select id="state-dropdown" onchange="displayHeritageInfo()">
+                    <option value="">Select a State or UT</option>
+                    <!-- Dropdown options for states -->
+                    <option value="Andhra Pradesh"> Andhra Pradesh</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Ladakh">Ladakh</option>
+                    <option value="Puducherry">Puducherry</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <div class="content">
+            <div id="heritageDetails">
+                <h2>Select a state to view its heritage sites</h2>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Cultural Heritage. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const heritageData = {
+        "Andhra Pradesh": [
+            {
+                name: "Tirupati Balaji Temple",
+                description: "One of the most famous pilgrimage sites in India, known for its grand architecture and spiritual significance.",
+                image: "https://1.bp.blogspot.com/-XT6SsCdI9-0/Uf-E48pCTvI/AAAAAAAAKwA/i30uqMg4M7w/s1600/tirupati-balaji-temple-night-view.jpg"
+            },
+            {
+                name: "Charminar",
+                description: "A historic monument and mosque located in Hyderabad, symbolizing the heritage of the region.",
+                image: "https://1.bp.blogspot.com/-3m2x5zIUtPo/TomoZL0evnI/AAAAAAAAAUw/WhbGSfwuac0/s1600/Char+Minar.jpg"
+            }
+        ],
+        "Arunachal Pradesh": [
+            {
+                name: "Tawang Monastery",
+                description: "The largest monastery in India and a significant center for Tibetan Buddhism.",
+                image: "https://i.pinimg.com/originals/d3/60/84/d360842e38cf670a55991b43c404c009.jpg"
+            }
+        ],
+        "Assam": [
+            {
+                name: "Kaziranga National Park",
+                description: "A UNESCO World Heritage Site, famous for its population of one-horned rhinoceroses.",
+                image: "https://theindiaexplorer.com/wp-content/uploads/2023/05/Kaziranga_National_Park-transformed-1-e1684389545358.jpeg"
+            },
+            {
+                name: "Kamakhya Temple",
+                description: "An ancient Hindu temple dedicated to the goddess Kamakhya, one of the oldest in India.",
+                image: "https://thumbs.dreamstime.com/z/kamakhya-devi-temple-assam-india-covered-flowers-historic-hindu-temple-goddess-kamakhya-india-decorated-colorful-159777920.jpg"
+            }
+        ],
+        "Bihar": [
+            {
+                name: "Mahabodhi Temple",
+                description: "A UNESCO World Heritage Site, this is where Buddha is said to have attained enlightenment.",
+                image: "https://www.tripsavvy.com/thmb/QZUBiTCTl2BvMAAla9vmUBqQEAk=/2120x1414/filters:fill(auto,1)/GettyImages-618355052-b865a78b33cf412b915909ad9d941f27.jpg"
+            },
+            {
+                name: "Nalanda University",
+                description: "An ancient center of learning, considered one of the first residential universities in the world.",
+                image: "https://4.bp.blogspot.com/-vrgTtb04UcY/VAb9CM5jJpI/AAAAAAAAEkw/lBK1KVtMjBk/s1600/Nalanda_Univercity-compressor.jpg"
+            }
+        ],
+        "Chhattisgarh": [
+            {
+                name: "Chitrakote Falls",
+                description: "Known as the 'Niagara of India,' this waterfall is a natural and cultural heritage site.",
+                image: "https://www.adotrip.com/public/images/areas/master_images/60c3262b53a0b-Chitrakoot_waterfalls.jpg"
+            },
+            {
+                name: "Barnawapara Wildlife Sanctuary",
+                description: "A significant sanctuary housing a variety of wildlife, including tigers and leopards.",
+                image: "https://www.chhattisgarhtourism.co.in/photo_gallery/barnawapara_wildlife_sanctuary/02.jpg"
+            }
+        ],
+        "Goa": [
+            {
+                name: "Basilica of Bom Jesus",
+                description: "A UNESCO World Heritage Site and a significant monument in the history of Christianity in India.",
+                image: "https://www.holidify.com/images/cmsuploads/compressed/shutterstock_1073481062_20190822145857.jpg"
+            },
+            {
+                name: "Se Cathedral",
+                description: "One of the largest churches in Asia, known for its Portuguese-Manueline architecture.",
+                image: "https://im.whatshot.in/img/2021/May/se-cathedral-1621507712.jpg"
+            }
+        ],
+        "Gujarat": [
+            {
+                name: "Rani ki Vav",
+                description: "An intricately constructed stepwell in Patan, a UNESCO World Heritage Site.",
+                image: "https://www.mysteryofindia.com/wp-content/uploads/2014/08/IMG_3321.jpg"
+            },
+            {
+                name: "Somnath Temple",
+                description: "One of the twelve Jyotirlinga shrines of Shiva, known for its architectural beauty.",
+                image: "https://www.worldtalentorg.com/wp-content/uploads/2021/03/Somanath_Temple.jpg"
+            }
+        ],
+        "Haryana": [
+            {
+                name: "Brahma Sarovar",
+                description: "A sacred water tank in Kurukshetra, associated with the legend of Lord Brahma.",
+                image: "https://www.holidify.com/images/cmsuploads/compressed/brahma-soravar_20180207160659.jpg"
+            },
+            {
+                name: "Yadavindra Gardens",
+                description: "Also known as Pinjore Gardens, these Mughal-style gardens are a significant heritage site.",
+                image: "https://thumbs.dreamstime.com/b/yadavindra-gardens-also-known-as-pinjore-panchkula-haryana-india-december-170348156.jpg"
+            }
+        ],
+        "Himachal Pradesh": [
+            {
+                name: "Kangra Fort",
+                description: "An ancient fort with a rich history, offering breathtaking views of the surrounding valley.",
+                image: "https://www.holidify.com/images/cmsuploads/compressed/msid-49845109,width-96,height-65_20171013133825.cms"
+            },
+            {
+                name: "Hadimba Temple",
+                description: "A unique wooden temple dedicated to Goddess Hadimba, located in Manali.",
+                image: "https://www.holidify.com/images/compressed/attractions/attr_1888.jpg"
+            }
+        ],
+        "Jharkhand": [
+            {
+                name: "Baidhyanath Temple",
+                description: "One of the twelve Jyotirlinga shrines of Shiva, known for its religious significance.",
+                image: "https://99pandit.com/wp-content/uploads/2023/04/Baba-Baidyanath-Temple-1.webp"
+            },
+            {
+                name: "Betla National Park",
+                description: "A significant wildlife sanctuary known for its population of tigers, elephants, and more.",
+                image: "https://www.traveltourguru.in/wp-content/uploads/2020/08/Betla-National-Park.jpg"
+            }
+        ],
+        "Karnataka": [
+            {
+                name: "Hampi",
+                description: "A UNESCO World Heritage Site, the ruins of the ancient Vijayanagara Empire.",
+                image: "https://4.bp.blogspot.com/-6ICyHR61RF0/Tobw5CFOjwI/AAAAAAAAATk/tJng4rR2ov8/s1600/hampi+%25281%2529.jpg"
+            },
+            {
+                name: "Mysore Palace",
+                description: "A historic palace that served as the residence of the Wadiyar dynasty.",
+                image: "https://cdn.britannica.com/27/242227-050-48358A10/Mysore-Palace-Mysuru-Karnataka-India.jpg"
+            }
+        ],
+        "Kerala": [
+            {
+                name: "Padmanabhaswamy Temple",
+                description: "One of the richest temples in the world, known for its intricate architecture.",
+                image: "https://blog.parrikar.com/wp-content/uploads/2021/06/28-23746-post/Padmanabhaswamy-Temple-Thiruvananthapuram-Kerala.jpg"
+            },
+            {
+                name: "Bekal Fort",
+                description: "A well-preserved fort on the Arabian Sea, offering stunning views.",
+                image: "https://www.keralatourism.org/images/picture/large/Bekal_Fort_1827.jpg"
+            }
+        ],
+        "Madhya Pradesh": [
+            {
+                name: "Khajuraho Temples",
+                description: "A UNESCO World Heritage Site known for its erotic sculptures and Nagara-style architecture.",
+                image: "https://www.holidify.com/images/cmsuploads/compressed/shutterstock_1032564361_20200219140243.jpg"
+            },
+            {
+                name: "Sanchi Stupa",
+                description: "One of the oldest stone structures in India, a UNESCO World Heritage Site.",
+                image: "https://travelandtrekking.com/wp-content/uploads/2018/01/Sanchi-Stupa-Madhya-Pradesh-picsc.jpg"
+            }
+        ],
+        "Maharashtra": [
+            {
+                name: "Ajanta Caves",
+                description: "A UNESCO World Heritage Site, famous for its ancient Buddhist rock-cut caves.",
+                image: "https://cdn.britannica.com/70/153470-050-F4594C27/Ajanta-Caves-Maharashtra-India.jpg"
+            },
+            {
+                name: "Ellora Caves",
+                description: "A UNESCO World Heritage Site, featuring monumental caves dedicated to Hindu, Buddhist, and Jain deities.",
+                image: "https://www.tripsavvy.com/thmb/tTPVCtmmRr8gxd7oowt4m57Egd4=/3000x2000/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-583958200-03a09c835d52423eb2d29dc624412908.jpg"
+            }
+        ],
+        "Manipur": [
+            {
+                name: "Kangla Fort",
+                description: "A historical fort in Imphal that served as the seat of Manipur's rulers.",
+                image: "https://indiano.travel/wp-content/uploads/2022/05/Beautiful-outside-View-of-kangla-fort.-Imphal-Manipur.jpg"
+            },
+            {
+                name: "Loktak Lake",
+                description: "The largest freshwater lake in Northeast India, known for its floating phumdis.",
+                image: "https://www.lostwithpurpose.com/wp-content/uploads/2017/07/DSC07518.jpg"
+            }
+        ],
+        "Meghalaya": [
+            {
+                name: "Living Root Bridges",
+                description: "Natural root bridges created by the Khasi and Jaintia tribes, a unique bioengineering marvel.",
+                image: "https://english.cdn.zeenews.com/sites/default/files/2024/08/30/1489488-3.2.jpg"
+            },
+            {
+                name: "Nohkalikai Falls",
+                description: "The tallest plunge waterfall in India, offering a breathtaking view.",
+                image: "https://travelmelodies.com/wp-content/uploads/2020/06/travel-melodies-nohkalikai-falls-meghalaya-india-asia.jpg"
+            }
+        ],
+        "Mizoram": [
+            {
+                name: "Phawngpui National Park",
+                description: "Known as the Blue Mountain, it's the highest peak in Mizoram with rich flora and fauna.",
+                image: "https://www.hlimg.com/images/things2do/738X538/ttd_1522922804m4.jpg"
+            },
+            {
+                name: "Aizawl City View",
+                description: "The scenic beauty of Mizoram's capital city, Aizawl, surrounded by lush green hills.",
+                image: "https://www.taleof2backpackers.com/wp-content/uploads/2019/12/Night-view-of-Aizawl-city.jpg"
+            }
+        ],
+        "Nagaland": [
+            {
+                name: "Kohima War Cemetery",
+                description: "A memorial dedicated to the soldiers who fought in the Battle of Kohima during World War II.",
+                image: "https://indiano.travel/wp-content/uploads/2022/04/Beautiful-sunlight-flooding-a-white-cross-and-all-the-grave-stones-in-Kohima-War-Cemetery-surrounded-by-trees-during-day-time-Nagaland-INDIA.jpg"
+            },
+            {
+                name: "Dzukou Valley",
+                description: "A picturesque valley known for its lush green landscape and seasonal flowers.",
+                image: "https://www.twobirdsbreakingfree.com/files/IMG_6553.jpg"
+            }
+        ],
+        "Odisha": [
+            {
+                name: "Konark Sun Temple",
+                description: "A UNESCO World Heritage Site known for its intricate stone carvings and chariot-shaped structure.",
+                image: "https://www.tripvaani.com/wp-content/uploads/2020/05/Konark-Sun-Temple-or-Black-Pagoda-The-Chariot-of-Sun.jpg"
+            },
+            {
+                name: "Jagannath Temple",
+                description: "A significant pilgrimage site and one of the Char Dham in India.",
+                image: "https://www.holidify.com/images/cmsuploads/compressed/1024px-Jagannath_Temple_Hyderabad_20180806195918_20180806195944.jpg"
+            }
+        ],
+        "Punjab": [
+            {
+                name: "Golden Temple",
+                description: "The holiest Gurdwara of Sikhism, known for its serene surroundings and sacred Sarovar.",
+                image: "https://cdn.tripways.com/2020/11/07094043/golden-temple-3.jpg"
+            },
+            {
+                name: "Jallianwala Bagh",
+                description: "A historic garden and memorial of national importance in Amritsar.",
+                image: "https://imgcld.yatra.com/ytimages/image/upload/v1436263306/Jallianwala_Bagh_3.jpg"
+            }
+        ],
+        "Rajasthan": [
+            {
+                name: "Amber Fort",
+                description: "A majestic fort with a mix of Hindu and Mughal architecture styles.",
+                image: "https://www.tripsavvy.com/thmb/Aedpr55M6p6Fr-WzmeGlcEzm6j4=/2121x1414/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-469788052-4010d53537c64802a437ad24bd0f1345.jpg"
+            },
+            {
+                name: "City Palace, Udaipur",
+                description: "A palace complex in Udaipur, known for its beautiful architecture and stunning lake views.",
+                image: "https://travelogyindia.b-cdn.net/blog/wp-content/uploads/2019/05/City-Palace-Udaipur.jpg"
+            }
+        ],
+        "Sikkim": [
+            {
+                name: "Rumtek Monastery",
+                description: "One of the most significant monasteries in Sikkim, known for its spiritual significance and architecture.",
+                image: "https://static.toiimg.com/photo/msid-56621729,width-96,height-65.cms"
+            },
+            {
+                name: "Tsongmo Lake",
+                description: "A glacial lake in the East Sikkim district, known for its scenic beauty.",
+                image: "https://www.adotrip.com/public/images/areas/5c3f0ab44a055-Tsomgo_Lake_Package_Tour.jpg"
+            }
+        ],
+        "Tamil Nadu": [
+            {
+                name: "Brihadeeswarar Temple",
+                description: "A UNESCO World Heritage Site and one of the largest temples in India.",
+                image: "https://edge.ixigo.com/ixi-api/img/519b6cdfe4b0f5a61e9c76e7_600x315.jpg"
+            },
+            {
+                name: "Meenakshi Temple",
+                description: "An iconic temple in Madurai, known for its thousand pillars and Dravidian architecture.",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Temple_de_M%C3%AEn%C3%A2ksh%C3%AE01.jpg/1200px-Temple_de_M%C3%AEn%C3%A2ksh%C3%AE01.jpg"
+            }
+        ],
+        "Telangana": [
+            {
+                name: "Golconda Fort",
+                description: "A citadel and fort known for its acoustics and grand architecture.",
+                image: "https://assets-news.housing.com/news/wp-content/uploads/2020/11/02184143/Everything-you-need-to-know-about-Golconda-Fort-FB-1200x700-compressed.jpg"
+            },
+            {
+                name: "Ramoji Film City",
+                description: "One of the largest film studio complexes in the world, a major tourist attraction.",
+                image: "https://static2.tripoto.com/media/filter/nl/img/189328/TripDocument/1449996535_dsc_3808.jpg"
+            }
+        ],
+        "Tripura": [
+            {
+                name: "Ujjayanta Palace",
+                description: "A former royal palace, now serving as a state museum in Agartala.",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Tripura_State_Museum_Agartala_Tripura_India.jpg/570px-Tripura_State_Museum_Agartala_Tripura_India.jpg"
+            },
+            {
+                name: "Neermahal",
+                description: "A beautiful palace located in the middle of Rudrasagar Lake, known as the 'Lake Palace of Tripura.'",
+                image: "https://www.taleof2backpackers.com/wp-content/uploads/2019/12/Neermahal-Palace-Tripura-2-1080x721.jpg"
+            }
+        ],
+        "Uttar Pradesh": [
+            {
+                name: "Taj Mahal",
+                description: "A UNESCO World Heritage Site and one of the Seven Wonders of the World, located in Agra.",
+                image: "https://www.unciatrails.com/wp-content/uploads/2020/07/Taj2.jpg"
+            },
+            {
+                name: "Varanasi Ghats",
+                description: "The sacred riverfront steps in Varanasi, known for their spiritual and cultural significance.",
+                image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ae/ed/5d/a-view-of-the-ghats-taken.jpg?w=1200&h=1200&s=1"
+            }
+        ],
+        "Uttarakhand": [
+            {
+                name: "Valley of Flowers",
+                description: "A UNESCO World Heritage Site, known for its diverse flora and natural beauty.",
+                image: "https://cultureandheritage.org/wp-content/uploads/2021/01/valleyofflowers.jpg"
+            },
+            {
+                name: "Kedarnath Temple",
+                description: "A major pilgrimage site dedicated to Lord Shiva, located in the Himalayas.",
+                image: "https://bontravelindia.com/wp-content/uploads/2021/10/Kedarnath-Temple-Uttarakhand.jpg"
+            }
+        ],
+        "West Bengal": [
+            {
+                name: "Victoria Memorial",
+                description: "A grand marble building in Kolkata, dedicated to Queen Victoria.",
+                image: "https://www.silverkris.com/wp-content/uploads/2020/03/credits-Manab-Das-cropped.jpg"
+            },
+            {
+                name: "Sundarbans National Park",
+                description: "A UNESCO World Heritage Site and a biosphere reserve, famous for its Bengal tigers.",
+                image: "https://beyonder.travel/wp-content/uploads/2020/06/Sundarban_river.jpg"
+            }
+        ]
+    };
+
+
+    function displayHeritageInfo() {
+        const state = document.getElementById("state-dropdown").value;
+        const heritageDetails = document.getElementById("heritageDetails");
+
+        if (state && heritageData[state]) {
+            heritageDetails.innerHTML = heritageData[state].map(site => `
+                <div class="heritage-site">
+                <h3>${site.name}</h3>
+                <p>${site.description}</p>
+                <img src="${site.image}" alt="${site.name}">
+                </div>
+            `).join('');
+            } else {
+                heritageDetails.innerHTML = '<h2>Select a state to view its heritage sites</h2>';
+            }
+        }
+    </script>
+</body>
+</html>

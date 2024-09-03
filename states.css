@@ -1,0 +1,58 @@
+.up{
+    margin-top: 100px;
+}
+.uttarpradesh {
+    background-image: url(up.png);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.Beach{
+    margin-top: 100px;
+}
+.Beaches {
+    background-color: rgb(0, 56, 56);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 200px;
+    width: 800px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Flexbox for side-by-side layout */
+    overflow: hidden;
+}
+.card img {
+    width: 300px; /* Fixed width for the image */
+    height: auto;
+}
+.card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column; /* Stack text vertically */
+    justify-content: center; /* Center align text vertically */
+}
+.card-number {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+}
+.card-text {
+    font-size: 16px;
+    color: #333;
+}
